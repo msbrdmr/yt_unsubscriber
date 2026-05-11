@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="wrap">
+    <h1>YouTube Bulk Unsubscriber</h1>
+    <div id="status" class="status">Initialising…</div>
+
+    <div class="stats">
+      <div><span class="label">Found</span><strong id="count">0</strong></div>
+      <div><span class="label">Pages</span><strong id="pages">0</strong></div>
+      <div><span class="label">Done</span><strong id="done">0</strong></div>
+      <div><span class="label">Failed</span><strong id="failed">0</strong></div>
+    </div>
+
+    <div class="progressbar"><div id="progress"></div></div>
+
+    <div class="row">
+      <label>Concurrency
+        <input id="concurrency" type="number" value="8" min="1" max="32">
+      </label>
+    </div>
+
+    <div class="actions">
+      <button id="fetch" disabled>1. Fetch subscriptions</button>
+      <button id="download" disabled>Download CSV backup</button>
+      <button id="unsubscribe" class="danger" disabled>2. Unsubscribe from ALL</button>
+      <button id="cancel" disabled>Cancel</button>
+    </div>
+
+    <details id="failures-box" hidden>
+      <summary>Recent failures</summary>
+      <ul id="failures"></ul>
+    </details>
+
+    <p class="hint">Runs against an open youtube.com tab using its InnerTube API. Sign in first. Higher concurrency is faster but more likely to be rate-limited.</p>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
